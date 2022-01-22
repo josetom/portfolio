@@ -3,25 +3,10 @@ import { Profile } from '@/additional';
 import ProfileCard from '@/components/ProfileCard';
 import ToggleTheme from '@/components/ToggleTheme';
 
+import Jose from '@/constants/Jose';
+
 export default function Home() {
-  const profile: Profile = {
-    name: 'Jose Tom',
-    designation: (
-      <>
-        Engineering Manager at{' '}
-        <a
-          className="font-semibold"
-          href="https://www.chargebee.com/"
-          target="_blank"
-          rel="noreferrer noopener"
-        >
-          Chargebee
-        </a>
-      </>
-    ),
-    description: 'Building and managing the Chargebee checkout experience and all things frontend',
-    image: '/images/IMG-sikkim-small.jpg',
-  };
+  const profile: Profile = Jose;
 
   return (
     <div className="static">
@@ -38,6 +23,7 @@ export default function Home() {
               designation={profile.designation}
               description={profile.description}
               image={profile.image}
+              social={profile.social}
             ></ProfileCard>
           </div>
         </div>
