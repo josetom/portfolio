@@ -29,7 +29,7 @@ export default function ProfileCard(profile: Profile) {
 
 const socialIcons = (socials: Social[]) => {
   let iconsList = socials.map((social) => socialIcon(social));
-  let className = `mt-3 w-72 place-items-center grid grid-cols-${socials.length}`;
+  let className = `mt-3 w-72 place-items-center sm:place-items-start grid grid-cols-${socials.length}`;
   return (
     <ul role="list" className={className}>
       {iconsList}
