@@ -16,7 +16,7 @@ export default function Home() {
       </Head>
       <main>
         <Container>
-          <div className="grid place-items-center h-screen">
+          <div className="grid place-items-center h-screen -mt-16">
             <ProfileCard
               name={profile.name}
               designation={profile.designation}

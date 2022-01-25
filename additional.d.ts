@@ -11,3 +11,8 @@ export type Social = {
   url: string;
   icon: JSX.Element;
 };
+
+export type Route = {
+  name: string;
+  link: string;
+};
