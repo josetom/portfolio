@@ -1,14 +1,11 @@
 import Link from 'next/link';
+import { classNames } from '@/lib/utils';
 
 type NavItemProps = {
   link: string;
   name: string;
   isSelected?: boolean;
 };
-
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
 
 export default function NavItem({ link, name, isSelected }: NavItemProps) {
   let className = classNames(
