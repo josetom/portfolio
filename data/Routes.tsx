@@ -6,7 +6,7 @@ const Routes = {
     },
     {
       name: 'Blogs',
-      link: '/blog/dummy',
+      link: '/blog',
     },
   ],
 };

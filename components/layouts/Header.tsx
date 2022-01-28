@@ -48,7 +48,7 @@ export default function Header() {
                 leaveTo="-translate-x-full"
               >
                 <div className="w-screen max-w-md">
-                  <div className="h-full flex flex-col bg-white dark:bg-gray-800 shadow-xl overflow-y-scroll">
+                  <div className="h-full flex flex-col bg-white dark:bg-black shadow-xl overflow-y-scroll">
                     <div className="max-w-7xl px-2 sm:px-4 lg:px-8">
                       <div className="relative flex items-center justify-between h-16">
                         <div className="flex items-center px-2 lg:px-0">
