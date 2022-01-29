@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
+import { useEffect } from 'react';
 import { parseISO, format } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
@@ -17,6 +18,15 @@ const mdxComponents = {
 export default function BlogPost({ blog }: { blog: Blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
   const blogUrl = 'https://www.josetom.com/blog/' + blog.slug;
+
+  useEffect(() => {
+    const registerView = () =>
+      fetch(`/api/blog/views/${blog.slug}`, {
+        method: 'POST',
+      });
+
+    registerView();
+  }, [blog.slug]);
 
   return (
     <Container>
