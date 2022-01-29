@@ -5,10 +5,8 @@ export default function ProfileCard(profile: Profile) {
   return (
     <div className="flex flex-col-reverse items-center sm:items-start sm:flex-row">
       <div className="flex flex-col pr-8 items-center sm:items-start">
-        <h1 className="font-bold text-3xl md:text-5xl tracking-tight mb-1 text-black dark:text-white">
-          {profile.name}
-        </h1>
-        <h2 className="text-gray-700 dark:text-gray-200 mb-4">{profile.designation}</h2>
+        <h1 className="mb-1">{profile.name}</h1>
+        <h3 className="mb-4">{profile.designation}</h3>
         <p className="text-gray-600 dark:text-gray-400 w-72 text-justify sm:text-left">
           {profile.description}
         </p>

@@ -6,8 +6,7 @@ module.exports = {
   // theme: {
   //   extend: {
   //     colors: {
-  //       teal: colors.teal,
-  //       cyan: colors.cyan,
+  //       primary: colors.gray,
   //     },
   //   },
   // },
@@ -16,5 +15,9 @@ module.exports = {
       pattern: /grid-cols-.+/,
     },
   ],
-  plugins: [require('@tailwindcss/forms'), require('@tailwindcss/aspect-ratio')],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('@tailwindcss/aspect-ratio'),
+    require('@tailwindcss/typography'),
+  ],
 };

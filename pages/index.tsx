@@ -1,9 +1,9 @@
 import Head from 'next/head';
 import { Profile } from '@/additional';
 import ProfileCard from '@/components/ProfileCard';
-import ToggleTheme from '@/components/ToggleTheme';
+import Container from '@/components/layouts/Container';
 
-import Jose from '@/constants/Jose';
+import Jose from '@/data/Jose';
 
 export default function Home() {
   const profile: Profile = Jose;
@@ -14,10 +14,9 @@ export default function Home() {
         <title>{profile.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <ToggleTheme></ToggleTheme>
       <main>
-        <div className="relative overflow-hidden bg-white dark:bg-gray-800 h-screen lg:overflow-hidden">
-          <div className="grid place-items-center h-screen">
+        <Container>
+          <div className="grid place-items-center h-screen -mt-16">
             <ProfileCard
               name={profile.name}
               designation={profile.designation}
@@ -26,7 +25,7 @@ export default function Home() {
               social={profile.social}
             ></ProfileCard>
           </div>
-        </div>
+        </Container>
       </main>
     </div>
   );
