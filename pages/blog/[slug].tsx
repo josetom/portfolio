@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Head from 'next/head';
 import { parseISO, format } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
@@ -6,6 +7,7 @@ import { allBlogs } from '.contentlayer/data';
 import { Blog } from '.contentlayer/types';
 import Container from '@/components/layouts/Container';
 import ViewCounter from '@/components/blog/ViewCounter';
+import ShareBlogToSocial from '@/components/blog/ShareBlogToSocial';
 import Jose from '@/data/Jose';
 
 const mdxComponents = {
@@ -14,9 +16,23 @@ const mdxComponents = {
 
 export default function BlogPost({ blog }: { blog: Blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
+  const blogUrl = 'https://www.josetom.com/blog/' + blog.slug;
 
   return (
     <Container>
+      <Head>
+        <meta name="title" property="og:title" content={blog.title} />
+        <meta name="url" property="og:url" content={blogUrl} />
+        <meta name="type" property="og:type" content="article" />
+        <meta name="image" property="og:image" content={blog.image} />
+        <meta name="author" content="Jose Tom" />
+        <meta name="publishedDate" property="article:published_time" content={blog.publishedAt} />
+        <meta
+          property="og:description"
+          content={'This blog from @_jose_tom_ is worth the read : ' + blog.title}
+        />
+        <meta property="og:locale" content="en_GB" />
+      </Head>
       <article className="relative sm:py-16 overflow-hidden">
         <div className="relative px-4 sm:px-6 lg:px-8">
           <div className="text-lg max-w-prose mx-auto">
@@ -44,8 +60,14 @@ export default function BlogPost({ blog }: { blog: Blog }) {
               </p>
             </div>
           </div>
+          <div className="text-lg max-w-prose mx-auto relative mt-3 h-6">
+            <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
+          </div>
           <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto text-justify">
             <MDXContent components={mdxComponents} />
+          </div>
+          <div className="text-lg max-w-prose mx-auto relative mt-3 p-3 h-6 border-t border-gray-200">
+            <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
           </div>
         </div>
       </article>
