@@ -37,10 +37,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
         <meta name="image" property="og:image" content={blog.image} />
         <meta name="author" content="Jose Tom" />
         <meta name="publishedDate" property="article:published_time" content={blog.publishedAt} />
-        <meta
-          property="og:description"
-          content={'This blog from @_jose_tom_ is worth the read : ' + blog.title}
-        />
+        <meta property="og:description" content={blog.summary} />
         <meta property="og:locale" content="en_GB" />
       </Head>
       <article className="relative sm:py-16 overflow-hidden">
