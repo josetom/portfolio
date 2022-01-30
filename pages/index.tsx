@@ -13,6 +13,13 @@ export default function Home() {
       <Head>
         <title>{profile.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+        <meta name="title" property="og:title" content="Jose Tom" />
+        <meta name="url" property="og:url" content="https://www.josetom.com" />
+        <meta name="type" property="og:type" content="website" />
+        <meta name="image" property="og:image" content={profile.image} />
+        <meta name="author" content="Jose Tom" />
+        <meta name="description" property="og:description" content={profile.description} />
+        <meta name="locale" property="og:locale" content="en_GB" />
       </Head>
       <main>
         <Container>

@@ -6,7 +6,7 @@ export default function ProfileCard(profile: Profile) {
     <div className="flex flex-col-reverse items-center sm:items-start sm:flex-row">
       <div className="flex flex-col pr-8 items-center sm:items-start">
         <h1 className="mb-1">{profile.name}</h1>
-        <h3 className="mb-4">{profile.designation}</h3>
+        <p className="mb-4 text-gray-700 dark:text-gray-200">{profile.designation}</p>
         <p className="text-gray-600 dark:text-gray-400 w-72 text-justify sm:text-left">
           {profile.description}
         </p>
@@ -38,7 +38,12 @@ const socialIcons = (socials: Social[]) => {
 const socialIcon = (social: Social) => {
   return (
     <li key={social.type}>
-      <a href={social.url} target="_blank" rel="noreferrer noopener">
+      <a
+        href={social.url}
+        target="_blank"
+        rel="noreferrer noopener"
+        aria-label={`View ${social.type} profile`}
+      >
         {social.icon}
       </a>
     </li>
