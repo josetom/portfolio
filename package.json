@@ -4,6 +4,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "postbuild": "node ./scripts/generate-rss.js && node ./scripts/generate-sitemap.js",
     "start": "next start",
     "lint": "next lint",
     "prisma-migrate-dev": "dotenv -e .env.local prisma db push"
