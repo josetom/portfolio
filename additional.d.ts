@@ -4,6 +4,7 @@ export type Profile = {
   description: string;
   image: string;
   social: Social[];
+  website: string;
 };
 
 export type Social = {
@@ -15,6 +16,7 @@ export type Social = {
 export type Route = {
   name: string;
   link: string;
+  title: string;
 };
 
 export type Views = {

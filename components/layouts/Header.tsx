@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import { Transition, Dialog } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import Routes from '@/data/Routes';
+import { Routes } from '@/data/Routes';
 import NavBar from '@/components/nav/NavBar';
 import ToggleTheme from '@/components/ToggleTheme';
 
