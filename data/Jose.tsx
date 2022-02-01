@@ -49,6 +49,7 @@ const Jose: Profile = {
       icon: <Instagram></Instagram>,
     },
   ],
+  website: 'https://www.josetom.com',
 };
 
 export default Jose;

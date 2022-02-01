@@ -37,8 +37,9 @@ export default function BlogPost({ blog }: { blog: Blog }) {
         <meta name="image" property="og:image" content={blog.image} />
         <meta name="author" content="Jose Tom" />
         <meta name="publishedDate" property="article:published_time" content={blog.publishedAt} />
-        <meta property="og:description" content={blog.summary} />
-        <meta property="og:locale" content="en_GB" />
+        <meta name="description" property="og:description" content={blog.summary} />
+        <meta name="locale" property="og:locale" content="en_GB" />
+        <title>{blog.title}</title>
       </Head>
       <article className="relative sm:py-16 overflow-hidden">
         <div className="relative px-4 sm:px-6 lg:px-8">
@@ -70,7 +71,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
           <div className="text-lg max-w-prose mx-auto relative mt-3 h-6">
             <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
           </div>
-          <div className="mt-6 prose prose-indigo prose-lg text-gray-500 mx-auto text-justify">
+          <div className="mt-6 prose prose-blue dark:prose-sky prose-lg text-gray-600 dark:text-gray-400 mx-auto text-justify">
             <MDXContent components={mdxComponents} />
           </div>
           <div className="text-lg max-w-prose mx-auto relative mt-3 p-3 h-6 border-t border-gray-200">

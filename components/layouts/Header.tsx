@@ -2,7 +2,7 @@ import { Fragment, useState } from 'react';
 import Link from 'next/link';
 import { Transition, Dialog } from '@headlessui/react';
 import { MenuIcon, XIcon } from '@heroicons/react/outline';
-import Routes from '@/data/Routes';
+import { Routes } from '@/data/Routes';
 import NavBar from '@/components/nav/NavBar';
 import ToggleTheme from '@/components/ToggleTheme';
 
@@ -66,7 +66,7 @@ export default function Header() {
                       {Routes.nav.map((route) => (
                         <Link key={route.name} href={route.link} passHref>
                           <a
-                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:text-white hover:bg-gray-700"
+                            className="block px-3 py-2 rounded-md text-base font-medium text-gray-400 hover:bg-gray-200 dark:hover:bg-gray-800"
                             onClick={() => setOpenMobileMenu(false)}
                           >
                             {route.name}
