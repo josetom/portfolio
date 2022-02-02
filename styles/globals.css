@@ -2,22 +2,50 @@
 @tailwind components;
 @tailwind utilities;
 
-blockquote, strong {
-    @apply text-black dark:text-white
+blockquote,
+strong {
+  @apply text-black dark:text-white;
 }
 
 article img {
-    @apply w-full rounded-lg
+  @apply w-full rounded-lg;
 }
 
 h1 {
-    @apply text-black dark:text-white font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight
+  @apply text-black dark:text-white font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight;
 }
 
 h2 {
-    @apply text-black dark:text-white font-semibold text-lg md:text-xl tracking-tight
+  @apply text-black dark:text-white font-semibold text-lg md:text-xl tracking-tight;
 }
 
 h3 {
-    @apply text-gray-700 dark:text-gray-200
+  @apply text-gray-700 dark:text-gray-200;
+}
+
+.prose .anchor {
+  @apply absolute invisible;
+
+  margin-left: -1em;
+  padding-right: 0.5em;
+  width: 80%;
+  max-width: 700px;
+  cursor: pointer;
+}
+
+.anchor:hover {
+  @apply visible no-underline;
+}
+
+.prose a {
+  @apply transition-all;
+}
+
+.prose .anchor:after {
+  @apply text-gray-300 dark:text-gray-700;
+  content: '#';
+}
+
+.prose *:hover > .anchor {
+  @apply visible no-underline;
 }
