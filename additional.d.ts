@@ -1,3 +1,5 @@
+import { Blog } from '.contentlayer/types';
+
 export type Profile = {
   name: string;
   designation: string | JSX.Element;
@@ -22,3 +24,8 @@ export type Route = {
 export type Views = {
   total: number;
 };
+
+export type BlogMeta = Pick<
+  Blog,
+  'title' | 'publishedAt' | 'summary' | 'tags' | 'image' | 'readingTime' | 'wordCount' | 'slug'
+>;

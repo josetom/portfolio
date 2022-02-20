@@ -1,11 +1,11 @@
-import { Blog } from '.contentlayer/types';
+import { BlogMeta } from '@/additional';
 import Twitter from '@/components/icons/Twitter';
 import Facebook from '@/components/icons/Facebook';
 import LinkedIn from '@/components/icons/LinkedIn';
 import LinkIcon from '@/components/icons/Link';
 import Tooltip from '@/components/Tooltip';
 
-export default function ShareBlogToSocial({ blog }: { blog: Blog }) {
+export default function ShareBlogToSocial({ blog }: { blog: BlogMeta }) {
   const blogUrl = 'https://www.josetom.com/blog/' + blog.slug;
 
   const copyLinkToClipboard = async () => {
@@ -13,7 +13,7 @@ export default function ShareBlogToSocial({ blog }: { blog: Blog }) {
   };
 
   return (
-    <div className="w-36 place-items-center sm:place-items-start grid grid-cols-4 absolute right-0">
+    <div className="w-36 place-items-center sm:place-items-start grid grid-cols-4">
       <Tooltip text="Share to Twitter">
         <a
           aria-label="Share to Twitter"
