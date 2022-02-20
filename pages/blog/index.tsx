@@ -10,13 +10,7 @@ export default function BlogsPage() {
         {allBlogs
           .sort((a, b) => parseISO(b.publishedAt).getTime() - parseISO(a.publishedAt).getTime())
           .map((blog) => (
-            <BlogPostListItem
-              key={blog.slug}
-              title={blog.title}
-              slug={blog.slug}
-              summary={blog.summary}
-              publishedAt={blog.publishedAt}
-            ></BlogPostListItem>
+            <BlogPostListItem key={blog.slug} blog={blog}></BlogPostListItem>
           ))}
       </div>
     </Container>

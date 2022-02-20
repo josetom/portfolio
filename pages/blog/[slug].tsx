@@ -9,11 +9,8 @@ import { Blog } from '.contentlayer/types';
 import Container from '@/components/layouts/Container';
 import ViewCounter from '@/components/blog/ViewCounter';
 import ShareBlogToSocial from '@/components/blog/ShareBlogToSocial';
+import MDXComponents from '@/components/blog/MDXComponents';
 import Jose from '@/data/Jose';
-
-const mdxComponents = {
-  // Button,
-};
 
 export default function BlogPost({ blog }: { blog: Blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
@@ -69,13 +66,17 @@ export default function BlogPost({ blog }: { blog: Blog }) {
             </div>
           </div>
           <div className="text-lg max-w-prose mx-auto relative mt-3 h-6">
-            <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
+            <div className="absolute right-0">
+              <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
+            </div>
           </div>
-          <div className="mt-6 prose prose-blue dark:prose-sky prose-lg text-gray-600 dark:text-gray-400 mx-auto text-justify">
-            <MDXContent components={mdxComponents} />
+          <div className="mt-6 prose prose-blue dark:prose-sky text-gray-600 dark:text-gray-400 mx-auto text-justify">
+            <MDXContent components={MDXComponents} />
           </div>
           <div className="text-lg max-w-prose mx-auto relative mt-3 p-3 h-6 border-t border-gray-200">
-            <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
+            <div className="absolute right-0">
+              <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
+            </div>
           </div>
         </div>
       </article>
