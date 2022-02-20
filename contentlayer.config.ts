@@ -2,6 +2,7 @@ import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/sou
 import readingTime from 'reading-time';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeToc from 'rehype-toc';
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -43,6 +44,7 @@ export default makeSource({
           },
         },
       ],
+      rehypeToc,
     ],
   },
 });
