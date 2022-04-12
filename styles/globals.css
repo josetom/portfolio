@@ -49,3 +49,7 @@ h3 {
 .prose *:hover > .anchor {
   @apply visible no-underline;
 }
+
+input {
+  @apply text-black dark:text-white bg-white dark:bg-black;
+}
