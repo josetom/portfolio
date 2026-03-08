@@ -32,19 +32,71 @@ const leadershipAreas = [
 
 const timeline = [
   {
-    period: 'Dec 2018 - Present',
-    role: 'Director of Engineering, Billing for AI',
+    period: 'Apr 2025 - Present',
+    role: 'Director of Engineering - Billing for AI',
     company: 'Chargebee',
+    highlights: [
+      'Leads Billing vertical across Usage-Based Billing, Invoices, Credit Notes, and Taxes.',
+      'Driving evolution of the billing platform for modern SaaS and AI business models.',
+      'Owns strategy spanning platform flexibility, performance, and compliance at scale.',
+    ],
   },
   {
-    period: 'Oct 2016 - Nov 2018',
-    role: 'Founder',
+    period: 'Jan 2022 - Mar 2025',
+    role: 'Senior Engineering Manager',
+    company: 'Chargebee',
+    highlights: [
+      'Architected and led Usage-Based Billing with real-time aggregation and complex pricing.',
+      'Built Atomic Pricing as an internal startup and merged it into Chargebee Growth Suite.',
+      'Enabled rapid pricing experimentation through risk-free controlled A/B workflows.',
+    ],
+  },
+  {
+    period: 'Dec 2019 - Jan 2022',
+    role: 'Engineering Manager',
+    company: 'Chargebee',
+    highlights: [
+      'Managed frontend teams across Checkout, Merchant UI, and App Experience.',
+      'Built middleware services and integrations supporting high-scale checkout flows.',
+      'Led migration from legacy JSP stack to modern Vue.js frontend architecture.',
+    ],
+  },
+  {
+    period: 'Nov 2018 - Nov 2019',
+    role: 'Software Engineering Lead',
+    company: 'Chargebee',
+    highlights: [
+      'Led Chargebee Checkout and hosted pages product used for payment capture and subscriptions.',
+      'Owned 2 APIs and framework-based integrations for embedded checkout experiences.',
+      'Integrated payment gateways like Stripe, Braintree, and others.',
+    ],
+  },
+  {
+    period: 'Jan 2017 - Nov 2018',
+    role: 'Co-Founder',
     company: 'Beecon Fleet Management',
+    highlights: [
+      'Built fleet management SaaS for real-time vehicle tracking and operations automation.',
+      'Owned end-to-end product delivery across frontend, backend, and infrastructure.',
+      'Handled revenue, sales, and execution under startup constraints.',
+    ],
   },
   {
-    period: 'Jul 2014 - Jan 2017',
-    role: 'Software Engineer',
+    period: 'Jan 2016 - Jan 2017',
+    role: 'Application Development Supervisor',
     company: 'Citi',
+    highlights: [
+      'Worked on Citi FX Pulse providing real-time market access across 80+ treasury sites.',
+    ],
+  },
+  {
+    period: 'Jul 2014 - Jan 2016',
+    role: 'Application Developer',
+    company: 'Citi',
+    highlights: [
+      'Built Local Markets Derivatives features (Spot, Futures) in FXLM.',
+      'Contributed to foreign exchange and local markets platform capabilities.',
+    ],
   },
 ];
 
@@ -104,7 +156,12 @@ export default function Home() {
                     <p className="font-medium text-gray-900 dark:text-white">
                       {item.role} - {item.company}
                     </p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.period}</p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">{item.period}</p>
+                    <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 dark:text-gray-300">
+                      {item.highlights.map((point) => (
+                        <li key={point}>{point}</li>
+                      ))}
+                    </ul>
                   </div>
                 ))}
               </div>
