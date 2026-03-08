@@ -19,15 +19,26 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>{RouteMap.nav[router.pathname]?.title || profile.name}</title>
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
         <meta
+          name="description"
+          content="Director of Engineering at Chargebee. Building high-scale billing, pricing, and checkout systems for modern SaaS and AI businesses."
+        />
+        <meta
           name="title"
           property="og:title"
           content={RouteMap.nav[router.pathname]?.title || profile.name}
         />
         <meta name="url" property="og:url" content={profile.website} />
         <meta name="type" property="og:type" content="website" />
-        <meta name="image" property="og:image" content={profile.image} />
+        <meta name="image" property="og:image" content={`${profile.website}${profile.image}`} />
         <meta name="author" content={profile.name} />
-        <meta name="description" property="og:description" content={profile.description} />
+        <meta property="og:description" content={profile.description} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={RouteMap.nav[router.pathname]?.title || profile.name} />
+        <meta
+          name="twitter:description"
+          content="Director of Engineering at Chargebee. Building high-scale billing, pricing, and checkout systems."
+        />
+        <meta name="twitter:image" content={`${profile.website}${profile.image}`} />
         <meta name="locale" property="og:locale" content="en_GB" />
       </Head>
       <GTag></GTag>

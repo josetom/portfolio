@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import { Profile } from '@/additional';
 import ProfileCard from '@/components/ProfileCard';
 import Container from '@/components/layouts/Container';
@@ -134,6 +135,31 @@ export default function Home() {
                 social={profile.social}
                 website={profile.website}
               ></ProfileCard>
+            </section>
+
+            <section className="py-8">
+              <h2 className="mb-5">Selected writing</h2>
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827] p-4 sm:p-5">
+                <ul className="space-y-2 text-sm sm:text-base">
+                  <li>
+                    <a
+                      href="https://www.chargebee.com/blog/author/jose-tom/"
+                      target="_blank"
+                      rel="noreferrer noopener"
+                      className="text-gray-800 dark:text-gray-100 hover:underline"
+                    >
+                      Chargebee Author Page
+                    </a>
+                  </li>
+                  <li>
+                    <Link href="/blog/my-experiences-founding-a-startup" passHref>
+                      <a className="text-gray-800 dark:text-gray-100 hover:underline">
+                        My Experiences Founding a Startup
+                      </a>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </section>
 
             <section className="py-8">
