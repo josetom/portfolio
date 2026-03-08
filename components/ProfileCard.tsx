@@ -1,5 +1,4 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { Profile, Social } from '@/additional';
 
 export default function ProfileCard(profile: Profile) {
@@ -13,23 +12,6 @@ export default function ProfileCard(profile: Profile) {
           <h1 className="mb-2 leading-tight text-gray-900 dark:text-white">{profile.name}</h1>
           <p className="mb-4 text-base text-gray-700 dark:text-gray-100">{profile.designation}</p>
           <p className="text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">{profile.description}</p>
-
-          <div className="mt-5 flex flex-wrap gap-3">
-            <a
-              href="https://www.linkedin.com/in/josetomm/"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="inline-flex items-center rounded-md bg-gray-900 dark:bg-sky-500 px-4 py-2 text-sm font-medium text-white hover:opacity-90 transition"
-            >
-              Connect on LinkedIn
-            </a>
-            <Link href="/blog" passHref>
-              <a className="inline-flex items-center rounded-md border border-gray-300 dark:border-gray-600 px-4 py-2 text-sm font-medium text-gray-800 dark:text-gray-100 hover:bg-gray-50 dark:hover:bg-gray-800 transition">
-                Read Blog
-              </a>
-            </Link>
-          </div>
-
           {socialIcons(profile.social)}
         </div>
 
