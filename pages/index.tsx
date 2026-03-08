@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import { Profile } from '@/additional';
 import ProfileCard from '@/components/ProfileCard';
 import Container from '@/components/layouts/Container';
@@ -40,7 +41,7 @@ const companyTimeline: CompanyGroup[] = [
   {
     company: 'Chargebee',
     website: 'https://www.chargebee.com/',
-    logo: 'https://logo.clearbit.com/chargebee.com',
+    logo: '/logos/chargebee.svg',
     roles: [
       {
         period: 'Apr 2025 - Present',
@@ -96,7 +97,7 @@ const companyTimeline: CompanyGroup[] = [
   {
     company: 'Beecon Fleet Management',
     website: 'https://beecon.in/',
-    logo: 'https://logo.clearbit.com/beecon.in',
+    logo: '/logos/beecon.svg',
     roles: [
       {
         period: 'Jan 2017 - Nov 2018',
@@ -112,7 +113,7 @@ const companyTimeline: CompanyGroup[] = [
   {
     company: 'Citi',
     website: 'https://www.citi.com/',
-    logo: 'https://logo.clearbit.com/citi.com',
+    logo: '/logos/citi.svg',
     roles: [
       {
         period: 'Jan 2016 - Jan 2017',
@@ -174,9 +175,11 @@ export default function Home() {
                     className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827]"
                   >
                     <div className="p-4 sm:p-5 border-b border-gray-100 dark:border-gray-700/70 flex items-center gap-3">
-                      <img
+                      <Image
                         src={group.logo}
                         alt={`${group.company} logo`}
+                        width={36}
+                        height={36}
                         className="h-9 w-9 rounded-md bg-white object-contain p-1"
                       />
                       <div>
