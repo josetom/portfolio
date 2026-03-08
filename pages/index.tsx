@@ -18,25 +18,6 @@ type CompanyGroup = {
   roles: RoleEntry[];
 };
 
-const leadershipAreas = [
-  {
-    title: 'Monetization Systems',
-    description: 'Usage-based billing, invoicing, credit notes, and taxes for global SaaS and AI businesses.',
-  },
-  {
-    title: 'Pricing Infrastructure',
-    description: 'Composable pricing and packaging systems that support rapid experimentation and enterprise scale.',
-  },
-  {
-    title: 'Checkout & Conversion',
-    description: 'High-performing and extensible checkout experiences that improve activation and revenue capture.',
-  },
-  {
-    title: 'Org Leadership',
-    description: 'Roadmaps, team growth, hiring, and cross-functional execution across product, GTM, and engineering.',
-  },
-];
-
 const companyTimeline: CompanyGroup[] = [
   {
     company: 'Chargebee',
@@ -149,21 +130,6 @@ export default function Home() {
                 social={profile.social}
                 website={profile.website}
               ></ProfileCard>
-            </section>
-
-            <section className="py-8">
-              <h2 className="mb-5">What I lead</h2>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {leadershipAreas.map((area) => (
-                  <div
-                    key={area.title}
-                    className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827] p-5"
-                  >
-                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{area.title}</h3>
-                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{area.description}</p>
-                  </div>
-                ))}
-              </div>
             </section>
 
             <section className="py-8">
