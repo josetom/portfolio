@@ -3,10 +3,10 @@ import { Profile, Social } from '@/additional';
 
 export default function ProfileCard(profile: Profile) {
   return (
-    <div className="w-full rounded-2xl border border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur p-6 sm:p-8 shadow-sm">
+    <div className="w-full rounded-2xl border border-gray-200 dark:border-gray-700/80 bg-white/90 dark:bg-[#111827]/85 backdrop-blur p-6 sm:p-8 shadow-sm dark:shadow-[0_0_0_1px_rgba(255,255,255,0.02)]">
       <div className="flex flex-col-reverse gap-6 sm:gap-8 items-start sm:flex-row sm:items-center">
         <div className="flex-1">
-          <p className="inline-flex items-center rounded-full bg-gray-100 dark:bg-gray-800 px-3 py-1 text-xs font-medium text-gray-600 dark:text-gray-300 mb-4">
+          <p className="inline-flex items-center rounded-full bg-gray-100 dark:bg-sky-500/10 px-3 py-1 text-xs font-medium text-gray-600 dark:text-sky-200 mb-4 border border-transparent dark:border-sky-400/20">
             Engineering Leadership · Billing · Pricing · Checkout
           </p>
           <h1 className="mb-2 leading-tight">{profile.name}</h1>
@@ -46,7 +46,7 @@ const socialIcon = (social: Social) => {
         target="_blank"
         rel="noreferrer noopener"
         aria-label={`View ${social.type} profile`}
-        className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 dark:border-gray-700 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-gray-500 transition"
+        className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 dark:border-gray-600 text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white hover:border-gray-400 dark:hover:border-sky-400/60 hover:bg-gray-50 dark:hover:bg-sky-400/10 transition"
       >
         {social.icon}
       </a>

@@ -73,7 +73,7 @@ export default function Home() {
                 {impactPoints.map((point) => (
                   <div
                     key={point}
-                    className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 text-gray-700 dark:text-gray-300"
+                    className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827] p-4 text-gray-700 dark:text-gray-200"
                   >
                     {point}
                   </div>
@@ -87,7 +87,7 @@ export default function Home() {
                 {leadershipAreas.map((area) => (
                   <div
                     key={area.title}
-                    className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5"
+                    className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827] p-5"
                   >
                     <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{area.title}</h3>
                     <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{area.description}</p>
@@ -98,7 +98,7 @@ export default function Home() {
 
             <section className="py-8">
               <h2 className="mb-5">Career timeline</h2>
-              <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 divide-y divide-gray-100 dark:divide-gray-800">
+              <div className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827] divide-y divide-gray-100 dark:divide-gray-700/70">
                 {timeline.map((item) => (
                   <div key={`${item.company}-${item.role}`} className="p-4 sm:p-5">
                     <p className="font-medium text-gray-900 dark:text-white">
