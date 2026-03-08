@@ -14,6 +14,9 @@ let moduleExports = {
 };
 
 moduleExports = withContentlayer()(moduleExports);
-moduleExports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+
+if (process.env.SENTRY_AUTH_TOKEN) {
+  moduleExports = withSentryConfig(moduleExports, sentryWebpackPluginOptions);
+}
 
 module.exports = moduleExports;
