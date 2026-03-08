@@ -15,6 +15,7 @@ type CompanyGroup = {
   company: string;
   website: string;
   logo: string;
+  tenure: string;
   roles: RoleEntry[];
 };
 
@@ -23,6 +24,7 @@ const companyTimeline: CompanyGroup[] = [
     company: 'Chargebee',
     website: 'https://www.chargebee.com/',
     logo: '/logos/chargebee.ico',
+    tenure: 'Nov 2018 - Present',
     roles: [
       {
         period: 'Apr 2025 - Present',
@@ -79,6 +81,7 @@ const companyTimeline: CompanyGroup[] = [
     company: 'Beecon Fleet Management',
     website: 'https://beecon.in/',
     logo: '/logos/beecon.ico',
+    tenure: 'Jan 2017 - Nov 2018',
     roles: [
       {
         period: 'Jan 2017 - Nov 2018',
@@ -95,6 +98,7 @@ const companyTimeline: CompanyGroup[] = [
     company: 'Citi',
     website: 'https://www.citi.com/',
     logo: '/logos/citi.ico',
+    tenure: 'Jul 2014 - Jan 2017',
     roles: [
       {
         period: 'Jan 2016 - Jan 2017',
@@ -157,7 +161,7 @@ export default function Home() {
                         >
                           {group.company}
                         </a>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">Experience summary by role</p>
+                        <p className="text-xs text-gray-500 dark:text-gray-400">{group.tenure}</p>
                       </div>
                     </div>
 
