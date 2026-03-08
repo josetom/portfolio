@@ -41,7 +41,7 @@ const companyTimeline: CompanyGroup[] = [
   {
     company: 'Chargebee',
     website: 'https://www.chargebee.com/',
-    logo: '/logos/chargebee.svg',
+    logo: '/logos/chargebee.ico',
     roles: [
       {
         period: 'Apr 2025 - Present',
@@ -97,7 +97,7 @@ const companyTimeline: CompanyGroup[] = [
   {
     company: 'Beecon Fleet Management',
     website: 'https://beecon.in/',
-    logo: '/logos/beecon.svg',
+    logo: '/logos/beecon.ico',
     roles: [
       {
         period: 'Jan 2017 - Nov 2018',
@@ -113,7 +113,7 @@ const companyTimeline: CompanyGroup[] = [
   {
     company: 'Citi',
     website: 'https://www.citi.com/',
-    logo: '/logos/citi.svg',
+    logo: '/logos/citi.ico',
     roles: [
       {
         period: 'Jan 2016 - Jan 2017',
