@@ -1,13 +1,11 @@
 import Image from 'next/image';
 import Head from 'next/head';
-import { useEffect } from 'react';
 import { parseISO, format } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import { allBlogs } from '.contentlayer/data';
 import { Blog } from '.contentlayer/types';
 import Container from '@/components/layouts/Container';
-import ViewCounter from '@/components/blog/ViewCounter';
 import ShareBlogToSocial from '@/components/blog/ShareBlogToSocial';
 import MDXComponents from '@/components/blog/MDXComponents';
 import Jose from '@/data/Jose';
@@ -16,14 +14,6 @@ export default function BlogPost({ blog }: { blog: Blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
   const blogUrl = 'https://www.josetom.com/blog/' + blog.slug;
 
-  useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/blog/views/${blog.slug}`, {
-        method: 'POST',
-      });
-
-    registerView();
-  }, [blog.slug]);
 
   return (
     <Container>
@@ -60,8 +50,6 @@ export default function BlogPost({ blog }: { blog: Blog }) {
               </div>
               <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
                 {blog.readingTime.text}
-                {` • `}
-                <ViewCounter slug={blog.slug} />
               </p>
             </div>
           </div>
