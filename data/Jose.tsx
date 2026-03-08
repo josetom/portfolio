@@ -9,7 +9,7 @@ const Jose: Profile = {
   name: 'Jose Tom',
   designation: (
     <>
-      Engineering Manager at{' '}
+      Director of Engineering (Billing for AI) at{' '}
       <a
         className="font-semibold"
         href="https://www.chargebee.com/"
@@ -20,7 +20,8 @@ const Jose: Profile = {
       </a>
     </>
   ),
-  description: 'Building and managing the Chargebee checkout experience and all things frontend',
+  description:
+    'Engineering leader and former founder with 11+ years building monetization systems, pricing platforms, and high-scale checkout experiences for modern SaaS and AI businesses.',
   image: '/images/IMG-sikkim-small.jpg',
   social: [
     {
