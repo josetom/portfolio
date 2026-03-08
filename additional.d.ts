@@ -21,10 +21,6 @@ export type Route = {
   title: string;
 };
 
-export type Views = {
-  total: number;
-};
-
 export type BlogMeta = Pick<
   Blog,
   'title' | 'publishedAt' | 'summary' | 'tags' | 'image' | 'readingTime' | 'wordCount' | 'slug'

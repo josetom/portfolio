@@ -29,8 +29,8 @@ const Jose: Profile = {
       icon: <LinkedIn></LinkedIn>,
     },
     {
-      type: 'Twitter',
-      url: 'https://twitter.com/_jose_tom_',
+      type: 'X',
+      url: 'https://x.com/_jose_tom_',
       icon: <Twitter></Twitter>,
     },
     {

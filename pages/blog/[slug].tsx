@@ -1,13 +1,12 @@
 import Image from 'next/image';
 import Head from 'next/head';
-import { useEffect } from 'react';
+import Link from 'next/link';
 import { parseISO, format } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import { allBlogs } from '.contentlayer/data';
 import { Blog } from '.contentlayer/types';
 import Container from '@/components/layouts/Container';
-import ViewCounter from '@/components/blog/ViewCounter';
 import ShareBlogToSocial from '@/components/blog/ShareBlogToSocial';
 import MDXComponents from '@/components/blog/MDXComponents';
 import Jose from '@/data/Jose';
@@ -15,15 +14,6 @@ import Jose from '@/data/Jose';
 export default function BlogPost({ blog }: { blog: Blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
   const blogUrl = 'https://www.josetom.com/blog/' + blog.slug;
-
-  useEffect(() => {
-    const registerView = () =>
-      fetch(`/api/blog/views/${blog.slug}`, {
-        method: 'POST',
-      });
-
-    registerView();
-  }, [blog.slug]);
 
   return (
     <Container>
@@ -38,46 +28,50 @@ export default function BlogPost({ blog }: { blog: Blog }) {
         <meta name="locale" property="og:locale" content="en_GB" />
         <title>{blog.title}</title>
       </Head>
-      <article className="relative sm:py-16 overflow-hidden">
-        <div className="relative px-4 sm:px-6 lg:px-8">
-          <div className="text-lg max-w-prose mx-auto">
-            <h1 className="mt-2 mb-4 block text-center font-extrabold tracking-tight">
+
+      <article className="relative overflow-hidden">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12 pb-16">
+          <div className="mb-6">
+            <Link href="/blog" passHref>
+              <a className="text-sm text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200">
+                ← Back to blog
+              </a>
+            </Link>
+          </div>
+
+          <header className="rounded-2xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827] p-6 sm:p-8">
+            <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight text-gray-900 dark:text-white">
               {blog.title}
             </h1>
-            <div className="flex flex-col items-start justify-between w-full mt-2 md:flex-row md:items-center">
+
+            <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center">
                 <Image
                   alt={Jose.name}
-                  height={24}
-                  width={24}
+                  height={28}
+                  width={28}
                   src={Jose.image}
                   className="rounded-full"
                 />
                 <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-                  {`${Jose.name} / `}
-                  {format(parseISO(blog.publishedAt), 'MMMM dd, yyyy')}
+                  {Jose.name} · {format(parseISO(blog.publishedAt), 'MMMM dd, yyyy')}
                 </p>
               </div>
-              <p className="mt-2 text-sm text-gray-600 dark:text-gray-400 min-w-32 md:mt-0">
-                {blog.readingTime.text}
-                {` • `}
-                <ViewCounter slug={blog.slug} />
-              </p>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{blog.readingTime.text}</p>
             </div>
-          </div>
-          <div className="text-lg max-w-prose mx-auto relative mt-3 h-6">
-            <div className="absolute right-0">
+
+            <div className="mt-4">
               <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
             </div>
-          </div>
-          <div className="mt-6 prose prose-blue dark:prose-sky text-gray-600 dark:text-gray-400 mx-auto text-justify">
+          </header>
+
+          <div className="mt-8 prose prose-blue dark:prose-sky dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
             <MDXContent components={MDXComponents} />
           </div>
-          <div className="text-lg max-w-prose mx-auto relative mt-3 p-3 h-6 border-t border-gray-200">
-            <div className="absolute right-0">
-              <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
-            </div>
-          </div>
+
+          <footer className="mt-12 pt-6 border-t border-gray-200 dark:border-gray-700/80 flex justify-end">
+            <ShareBlogToSocial blog={blog}></ShareBlogToSocial>
+          </footer>
         </div>
       </article>
     </Container>
