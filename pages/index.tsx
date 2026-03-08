@@ -55,51 +55,61 @@ export default function Home() {
     <div className="static">
       <main>
         <Container>
-          <section className="grid place-items-center min-h-[70vh] py-16">
-            <ProfileCard
-              name={profile.name}
-              designation={profile.designation}
-              description={profile.description}
-              image={profile.image}
-              social={profile.social}
-              website={profile.website}
-            ></ProfileCard>
-          </section>
+          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20">
+            <section className="pt-10 sm:pt-14 pb-8">
+              <ProfileCard
+                name={profile.name}
+                designation={profile.designation}
+                description={profile.description}
+                image={profile.image}
+                social={profile.social}
+                website={profile.website}
+              ></ProfileCard>
+            </section>
 
-          <section className="pb-10">
-            <h2 className="mb-4">Impact at a glance</h2>
-            <ul className="list-disc pl-5 space-y-2 text-gray-700 dark:text-gray-300">
-              {impactPoints.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-          </section>
+            <section className="py-8">
+              <h2 className="mb-5">Impact at a glance</h2>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {impactPoints.map((point) => (
+                  <div
+                    key={point}
+                    className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-4 text-gray-700 dark:text-gray-300"
+                  >
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </section>
 
-          <section className="pb-10">
-            <h2 className="mb-4">What I lead</h2>
-            <div className="grid gap-4 sm:grid-cols-2">
-              {leadershipAreas.map((area) => (
-                <div key={area.title} className="rounded-md border border-gray-200 dark:border-gray-800 p-4">
-                  <h3 className="font-semibold mb-2">{area.title}</h3>
-                  <p className="text-gray-700 dark:text-gray-300">{area.description}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+            <section className="py-8">
+              <h2 className="mb-5">What I lead</h2>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {leadershipAreas.map((area) => (
+                  <div
+                    key={area.title}
+                    className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 p-5"
+                  >
+                    <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{area.title}</h3>
+                    <p className="text-gray-700 dark:text-gray-300 leading-relaxed">{area.description}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
 
-          <section className="pb-20">
-            <h2 className="mb-4">Career timeline</h2>
-            <div className="space-y-3">
-              {timeline.map((item) => (
-                <div key={`${item.company}-${item.role}`} className="text-gray-700 dark:text-gray-300">
-                  <p className="font-medium">
-                    {item.role} - {item.company}
-                  </p>
-                  <p className="text-sm text-gray-500 dark:text-gray-400">{item.period}</p>
-                </div>
-              ))}
-            </div>
-          </section>
+            <section className="py-8">
+              <h2 className="mb-5">Career timeline</h2>
+              <div className="rounded-xl border border-gray-200 dark:border-gray-800 bg-white dark:bg-gray-900 divide-y divide-gray-100 dark:divide-gray-800">
+                {timeline.map((item) => (
+                  <div key={`${item.company}-${item.role}`} className="p-4 sm:p-5">
+                    <p className="font-medium text-gray-900 dark:text-white">
+                      {item.role} - {item.company}
+                    </p>
+                    <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">{item.period}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+          </div>
         </Container>
       </main>
     </div>
