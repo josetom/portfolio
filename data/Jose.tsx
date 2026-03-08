@@ -21,7 +21,7 @@ const Jose: Profile = {
     </>
   ),
   description:
-    'Engineering leader and former founder with 11+ years building monetization systems, pricing platforms, and high-scale checkout experiences for modern SaaS and AI businesses.',
+    'Engineering Leader and Former Founder with 11+ years of experience building high-scale, mission-critical systems. Founded and led a startup, gaining first-hand experience in product-market fit, rapid execution, and scaling technology under resource constraints. At Chargebee, I’ve architected and scaled core monetization systems like Usage-Based Billing — capable of processing hundreds of thousands of events per second with real-time aggregation and complex pricing logic.',
   image: '/images/IMG-sikkim-small.jpg',
   social: [
     {
