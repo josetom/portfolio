@@ -180,7 +180,7 @@ export default function Home() {
                         alt={`${group.company} logo`}
                         width={36}
                         height={36}
-                        className="h-9 w-9 rounded-md bg-white object-contain p-1"
+                        className="h-9 w-9 object-contain"
                       />
                       <div>
                         <a
