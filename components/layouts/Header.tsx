@@ -28,6 +28,11 @@ export default function Header() {
             </div>
           </div>
           <div className="flex items-center px-2 lg:px-0">
+            <Link href="/contact" passHref>
+              <a className="inline-flex items-center rounded-lg px-2 py-2 text-sm font-medium text-gray-700 hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-800 transition-all sm:px-3 lg:hidden">
+                Contact
+              </a>
+            </Link>
             <ToggleTheme></ToggleTheme>
           </div>
         </div>

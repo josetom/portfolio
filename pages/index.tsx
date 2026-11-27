@@ -4,6 +4,7 @@ import ProfileCard from '@/components/ProfileCard';
 import Container from '@/components/layouts/Container';
 
 import Jose from '@/data/Jose';
+import { jobTitle } from '@/data/site';
 
 type RoleEntry = {
   period: string;
@@ -13,7 +14,8 @@ type RoleEntry = {
 
 type CompanyGroup = {
   company: string;
-  website: string;
+  website?: string;
+  websiteNote?: string;
   logo: string;
   tenure: string;
   roles: RoleEntry[];
@@ -28,58 +30,57 @@ const companyTimeline: CompanyGroup[] = [
     roles: [
       {
         period: 'Apr 2025 - Present',
-        role: 'Director of Engineering - Billing for AI',
+        role: jobTitle,
         highlights: [
-          'Leads Billing vertical across Usage-Based Billing, Invoices, Credit Notes, and Taxes.',
-          'Driving evolution of the billing platform for modern SaaS and AI business models.',
-          'Owns strategy spanning platform flexibility, performance, and compliance at scale.',
-          'Built Chargebee Usage-Based Billing from the ground up for high-throughput, real-time billing workloads.',
-          'Scaled billing infrastructure to handle ~200K requests per second using cell-based architecture.',
+          'Leads the billing organization across usage-based billing, prepaid credits, invoices, credit notes, and tax.',
+          'Sets platform strategy for flexibility, performance, and compliance at scale.',
+          'Built Chargebee Usage-Based Billing for high-throughput, real-time workloads.',
+          'Scaled billing infrastructure to ~200K requests per second on a cell-based architecture.',
         ],
       },
       {
         period: 'Jan 2022 - Mar 2025',
         role: 'Senior Engineering Manager',
         highlights: [
-          'Architected and led Usage-Based Billing with real-time aggregation and complex pricing.',
+          'Architected and led usage-based billing, including real-time aggregation and complex pricing.',
           <>
-            Built{' '}
+            Built Atomic Pricing as an internal startup and merged it into{' '}
             <a
-              href="https://www.atomicpricing.com/"
+              href="https://www.chargebee.com/growth/"
               target="_blank"
               rel="noreferrer noopener"
               className="underline decoration-sky-500/60 hover:decoration-sky-400"
             >
-              Atomic Pricing
-            </a>{' '}
-            as an internal startup and merged it into Chargebee Growth Suite.
+              Chargebee Growth
+            </a>
+            . The Atomic Pricing site is now read-only.
           </>,
-          'Enabled rapid pricing experimentation through risk-free controlled A/B workflows.',
+          'Enabled risk-free, controlled A/B workflows for pricing experiments.',
         ],
       },
       {
         period: 'Dec 2019 - Jan 2022',
         role: 'Engineering Manager',
         highlights: [
-          'Managed frontend teams across Checkout, Merchant UI, and App Experience.',
-          'Built middleware services and integrations supporting high-scale checkout flows.',
-          'Led migration from legacy JSP stack to modern Vue.js frontend architecture.',
+          'Led frontend teams for Checkout, Merchant UI, and App Experience.',
+          'Built middleware and integrations for high-scale checkout.',
+          'Led the migration from a legacy JSP stack to Vue.js.',
         ],
       },
       {
         period: 'Nov 2018 - Nov 2019',
         role: 'Software Engineering Lead',
         highlights: [
-          'Led Chargebee Checkout and hosted pages product used for payment capture and subscriptions.',
-          'Owned APIs and framework-based integrations for embedded checkout experiences.',
-          'Integrated payment gateways like Stripe, Braintree, and others.',
+          'Led Chargebee Checkout and hosted pages for payment capture and subscriptions.',
+          'Owned APIs and framework integrations for embedded checkout.',
+          'Integrated payment gateways, including Stripe and Braintree.',
         ],
       },
     ],
   },
   {
     company: 'Beecon Fleet Management',
-    website: 'https://beecon.in/',
+    websiteNote: '(site no longer live)',
     logo: '/logos/beecon.ico',
     tenure: 'Jan 2017 - Nov 2018',
     roles: [
@@ -87,9 +88,9 @@ const companyTimeline: CompanyGroup[] = [
         period: 'Jan 2017 - Nov 2018',
         role: 'Co-Founder',
         highlights: [
-          'Built fleet management SaaS for real-time vehicle tracking and operations automation.',
-          'Owned end-to-end product delivery across frontend, backend, and infrastructure.',
-          'Handled revenue, sales, and execution under startup constraints.',
+          'Built a fleet-management product for real-time vehicle tracking and operations.',
+          'Owned delivery across frontend, backend, and infrastructure.',
+          'Responsible for revenue, sales, and execution under startup constraints.',
         ],
       },
     ],
@@ -103,14 +104,14 @@ const companyTimeline: CompanyGroup[] = [
       {
         period: 'Jan 2016 - Jan 2017',
         role: 'Application Development Supervisor',
-        highlights: ['Worked on Citi FX Pulse providing real-time market access across 80+ treasury sites.'],
+        highlights: ['Citi FX Pulse: real-time market access across 80+ treasury sites.'],
       },
       {
         period: 'Jul 2014 - Jan 2016',
         role: 'Application Developer',
         highlights: [
-          'Built Local Markets Derivatives features (Spot, Futures) in FXLM.',
-          'Contributed to foreign exchange and local markets platform capabilities.',
+          'Built Local Markets Derivatives features (spot and futures) in FXLM.',
+          'Contributed to the foreign-exchange and local-markets platform.',
         ],
       },
     ],
@@ -121,9 +122,8 @@ export default function Home() {
   const profile: Profile = Jose;
 
   return (
-    <div className="static">
+    <Container>
       <main>
-        <Container>
           <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20">
             <section className="pt-10 sm:pt-14 pb-8">
               <ProfileCard
@@ -137,7 +137,7 @@ export default function Home() {
             </section>
 
             <section className="py-8">
-              <h2 className="mb-5">Career timeline</h2>
+              <h2 className="mb-5">Experience</h2>
               <div className="space-y-5">
                 {companyTimeline.map((group) => (
                   <div
@@ -153,14 +153,23 @@ export default function Home() {
                         className="h-9 w-9 object-contain"
                       />
                       <div>
-                        <a
-                          href={group.website}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="font-semibold text-gray-900 dark:text-white hover:underline"
-                        >
-                          {group.company}
-                        </a>
+                        {group.website ? (
+                          <a
+                            href={group.website}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="font-semibold text-gray-900 dark:text-white hover:underline"
+                          >
+                            {group.company}
+                          </a>
+                        ) : (
+                          <p className="font-semibold text-gray-900 dark:text-white">
+                            {group.company}{' '}
+                            <span className="font-normal text-gray-500 dark:text-gray-400">
+                              {group.websiteNote}
+                            </span>
+                          </p>
+                        )}
                         <p className="text-xs text-gray-500 dark:text-gray-400">{group.tenure}</p>
                       </div>
                     </div>
@@ -183,8 +192,7 @@ export default function Home() {
               </div>
             </section>
           </div>
-        </Container>
       </main>
-    </div>
+    </Container>
   );
 }

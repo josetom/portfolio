@@ -2,6 +2,12 @@ import { writeFileSync, readFileSync } from 'fs';
 import { globby } from 'globby';
 import RSS from 'rss';
 
+function publishedDate(value) {
+  const [year, month, day] = String(value).slice(0, 10).split('-').map(Number);
+  // Noon UTC keeps the calendar day stable for readers west of UTC.
+  return new Date(Date.UTC(year, month - 1, day, 12, 0, 0));
+}
+
 async function generate() {
   const feed = new RSS({
     title: 'Jose Tom',
@@ -18,7 +24,7 @@ async function generate() {
     feed.item({
       title: post.title,
       url: `https://www.josetom.com/blog/${post.slug}`,
-      date: post.publishedAt,
+      date: publishedDate(post.publishedAt),
       description: post.summary,
     });
   });

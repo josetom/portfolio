@@ -1,7 +1,7 @@
 import Link from 'next/link';
-import { parseISO, format } from 'date-fns';
 
 import type { BlogMeta } from '@/additional';
+import { formatPublishedDate } from '@/lib/dates';
 
 export default function BlogPostListItem({ blog }: { blog: BlogMeta }) {
   return (
@@ -12,7 +12,7 @@ export default function BlogPostListItem({ blog }: { blog: BlogMeta }) {
             {blog.title}
           </h2>
           <p className="text-sm text-gray-500 dark:text-gray-400 shrink-0">
-            {format(parseISO(blog.publishedAt), 'MMMM dd, yyyy')}
+            {formatPublishedDate(blog.publishedAt)}
           </p>
         </div>
 

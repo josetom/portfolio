@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Head from 'next/head';
 import Link from 'next/link';
-import { parseISO, format } from 'date-fns';
 import { useMDXComponent } from 'next-contentlayer/hooks';
 
 import { allBlogs } from '.contentlayer/data';
@@ -10,20 +9,22 @@ import Container from '@/components/layouts/Container';
 import ShareBlogToSocial from '@/components/blog/ShareBlogToSocial';
 import MDXComponents from '@/components/blog/MDXComponents';
 import Jose from '@/data/Jose';
+import { siteUrl } from '@/data/site';
+import { formatPublishedDate } from '@/lib/dates';
 
 export default function BlogPost({ blog }: { blog: Blog }) {
   const MDXContent = useMDXComponent(blog.body.code);
-  const blogUrl = 'https://www.josetom.com/blog/' + blog.slug;
+  const blogUrl = `${siteUrl}/blog/${blog.slug}`;
 
   return (
     <Container>
       <Head>
         <meta name="title" property="og:title" content={blog.title} />
-        <meta name="url" property="og:url" content={blogUrl} />
+        <meta key="og:url" name="url" property="og:url" content={blogUrl} />
         <meta name="type" property="og:type" content="article" />
         <meta name="image" property="og:image" content={blog.image} />
         <meta name="author" content="Jose Tom" />
-        <meta name="publishedDate" property="article:published_time" content={blog.publishedAt} />
+        <meta name="publishedDate" property="article:published_time" content={blog.publishedAt.slice(0, 10)} />
         <meta name="description" property="og:description" content={blog.summary} />
         <meta name="locale" property="og:locale" content="en_GB" />
         <title>{blog.title}</title>
@@ -54,7 +55,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
                   className="rounded-full"
                 />
                 <p className="ml-2 text-sm text-gray-700 dark:text-gray-300">
-                  {Jose.name} · {format(parseISO(blog.publishedAt), 'MMMM dd, yyyy')}
+                  {Jose.name} · {formatPublishedDate(blog.publishedAt)}
                 </p>
               </div>
               <p className="text-sm text-gray-500 dark:text-gray-400">{blog.readingTime.text}</p>

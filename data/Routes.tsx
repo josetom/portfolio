@@ -22,6 +22,11 @@ const Routes: RoutesType = {
       link: '/blog',
       title: "Jose Tom's Blog",
     },
+    {
+      name: 'Contact',
+      link: '/contact',
+      title: 'Contact · Jose Tom',
+    },
   ],
 };
 
