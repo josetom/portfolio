@@ -1,6 +1,5 @@
 import Image from 'next/image';
 import { Profile, Social } from '@/additional';
-import { resume } from '@/data/site';
 
 export default function ProfileCard(profile: Profile) {
   return (
@@ -14,16 +13,6 @@ export default function ProfileCard(profile: Profile) {
           <p className="mb-4 text-base text-gray-700 dark:text-gray-100">{profile.designation}</p>
           <p className="text-gray-700 dark:text-gray-300 max-w-2xl leading-relaxed">{profile.description}</p>
           {socialIcons(profile.social)}
-          {/* Resume link: swap `resume.href` in data/site.ts for /resume.pdf when a PDF is added. */}
-          <p className="mt-4 text-sm">
-            <a
-              href={resume.href}
-              {...(resume.href.startsWith('http') ? { target: '_blank', rel: 'noreferrer noopener' } : {})}
-              className="font-medium text-gray-800 underline decoration-sky-500/60 hover:decoration-sky-400 dark:text-gray-100"
-            >
-              {resume.label}
-            </a>
-          </p>
         </div>
 
         <div className="shrink-0">

@@ -80,7 +80,7 @@ const companyTimeline: CompanyGroup[] = [
   },
   {
     company: 'Beecon Fleet Management',
-    websiteNote: '(site no longer live)',
+    website: 'https://beecon.in/',
     logo: '/logos/beecon.ico',
     tenure: 'Jan 2017 - Nov 2018',
     roles: [

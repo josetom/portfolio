@@ -20,13 +20,3 @@ export const location = {
 export const linkedInUrl = 'https://www.linkedin.com/in/josetomm/';
 
 export const xUrl = 'https://x.com/_jose_tom_';
-
-/**
- * Resume / CV.
- * There is no resume PDF in the repo. This links to LinkedIn and is labelled as the CV for now.
- * To switch to a file: add `public/resume.pdf`, then set `href` to '/resume.pdf'.
- */
-export const resume = {
-  label: 'Resume / CV',
-  href: linkedInUrl,
-};
