@@ -10,13 +10,19 @@ const Jose: Profile = {
   designation: (
     <>
       {jobTitle} at{' '}
-      <a className="font-semibold" href={employer.url} target="_blank" rel="noreferrer noopener">
+      <a
+        className="underline decoration-accent/40 hover:decoration-accent dark:decoration-accent-dark/40"
+        href={employer.url}
+        target="_blank"
+        rel="noreferrer noopener"
+      >
         {employer.name}
       </a>
       {` · ${location.label}`}
     </>
   ),
-  description: `I lead Usage-Based Billing and Prepaid Credits for AI at Chargebee: the billing platform, and the organization behind usage, invoices, credit notes, and tax. Usage-based billing supports real-time aggregation and complex pricing at hundreds of thousands of events per second. I co-founded Beecon Fleet Management before joining Chargebee. Based in ${location.label}.`,
+  description:
+    'I lead the billing platform and the organization behind invoices, credit notes, and tax. The platform supports real-time aggregation and complex pricing at hundreds of thousands of events per second. I co-founded Beecon Fleet Management before joining Chargebee.',
   image: '/images/IMG-sikkim-small.jpg',
   social: [
     {

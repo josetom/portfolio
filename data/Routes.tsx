@@ -18,9 +18,9 @@ const Routes: RoutesType = {
       title: 'Jose Tom',
     },
     {
-      name: 'Blog',
+      name: 'Writing',
       link: '/blog',
-      title: "Jose Tom's Blog",
+      title: 'Writing · Jose Tom',
     },
   ],
 };

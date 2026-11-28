@@ -66,7 +66,7 @@ export default function BlogPost({ blog }: { blog: Blog }) {
             </div>
           </header>
 
-          <div className="mt-8 prose prose-blue dark:prose-sky dark:prose-invert max-w-none text-gray-700 dark:text-gray-300">
+          <div className="prose mt-8 max-w-none text-base text-neutral-700 dark:prose-invert dark:text-neutral-300">
             <MDXContent components={MDXComponents} />
           </div>
 

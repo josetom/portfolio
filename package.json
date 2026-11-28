@@ -6,7 +6,8 @@
     "build": "next build",
     "postbuild": "node ./scripts/generate-rss.mjs && node ./scripts/generate-sitemap.mjs",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "postinstall": "node scripts/patch-react-exports.js"
   },
   "engines": {
     "node": "24.x"
@@ -21,21 +22,21 @@
     "@tippyjs/react": "^4.2.6",
     "contentlayer": "^0.0.34",
     "date-fns": "^2.28.0",
-    "next": "12.0.8",
+    "next": "13.5.6",
     "next-contentlayer": "^0.0.34",
-    "next-themes": "^0.0.15",
-    "react": "17.0.2",
-    "react-dom": "17.0.2",
+    "next-themes": "0.4.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
     "reading-time": "^1.5.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^16.1.0",
     "@commitlint/config-conventional": "^16.0.0",
-    "@types/react": "^17.0.38",
+    "@types/react": "18.2.79",
     "autoprefixer": "^10.4.2",
     "dotenv-cli": "^4.1.1",
     "eslint": "8.7.0",
-    "eslint-config-next": "12.0.8",
+    "eslint-config-next": "13.5.6",
     "globby": "^13.1.0",
     "husky": "^7.0.4",
     "postcss": "^8.4.5",
@@ -44,6 +45,6 @@
     "rehype-autolink-headings": "^6.1.1",
     "rehype-slug": "^5.0.1",
     "rss": "^1.2.2",
-    "tailwindcss": "^3.0.15"
+    "tailwindcss": "3.4.17"
   }
 }

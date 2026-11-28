@@ -9,6 +9,7 @@ import { Profile } from '@/additional';
 import Jose from '@/data/Jose';
 import { RouteMap } from '@/data/Routes';
 import { employer, jobTitle, location, siteUrl } from '@/data/site';
+import { inter, sourceSerif } from '@/lib/fonts';
 
 function canonicalUrl(asPath: string) {
   const path = (asPath || '/').split(/[?#]/)[0] || '/';
@@ -63,7 +64,9 @@ function MyApp({ Component, pageProps }: AppProps) {
       </Head>
       <GTag></GTag>
       <ThemeProvider attribute="class">
-        <Component {...pageProps} />
+        <div className={`${inter.variable} ${sourceSerif.variable} font-sans`}>
+          <Component {...pageProps} />
+        </div>
       </ThemeProvider>
     </>
   );

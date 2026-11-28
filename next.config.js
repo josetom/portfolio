@@ -11,6 +11,14 @@ let moduleExports = {
     locales: ['en-GB'],
     defaultLocale: 'en-GB',
   },
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      'react/jsx-runtime.js': require.resolve('react/jsx-runtime'),
+      'react/jsx-dev-runtime.js': require.resolve('react/jsx-dev-runtime'),
+    };
+    return config;
+  },
 };
 
 moduleExports = withContentlayer()(moduleExports);
