@@ -65,3 +65,29 @@ h3 {
 input {
   @apply text-neutral-950 dark:text-white bg-white dark:bg-black;
 }
+
+.cursor-spot {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    rgba(15, 111, 106, 0.14),
+    transparent 42%
+  );
+}
+
+.dark .cursor-spot {
+  background: radial-gradient(
+    520px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    rgba(158, 217, 212, 0.12),
+    transparent 45%
+  );
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-spot {
+    display: none;
+  }
+}

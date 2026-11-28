@@ -93,33 +93,6 @@ const experience: RoleEntry[] = [
   },
 ];
 
-const selectedWork = [
-  {
-    title: 'Usage-based billing platform',
-    outcome:
-      'Built Chargebee Usage-Based Billing for high-throughput, real-time workloads, and scaled it to ~200K requests per second on a cell-based architecture.',
-    tags: ['Usage-based billing', 'Real-time', 'Platform'],
-  },
-  {
-    title: 'Atomic Pricing',
-    outcome:
-      'Built as an internal startup and merged into Chargebee Growth. The Atomic Pricing site is now read-only.',
-    tags: ['Pricing', 'Experimentation'],
-  },
-  {
-    title: 'Checkout migration',
-    outcome:
-      'Led frontend teams for Checkout, Merchant UI, and App Experience, and the migration from a legacy JSP stack to Vue.js.',
-    tags: ['Checkout', 'Frontend'],
-  },
-  {
-    title: 'Beecon',
-    href: 'https://beecon.in/',
-    outcome: 'Built a fleet-management product for real-time vehicle tracking and operations.',
-    tags: ['Founding', 'Fleet'],
-  },
-];
-
 export default function Home() {
   const profile: Profile = Jose;
   const latestPosts = allBlogs
@@ -151,11 +124,13 @@ export default function Home() {
                 </a>
               </Link>
             </div>
-            <div className="mt-6 divide-y divide-neutral-200 dark:divide-neutral-800">
+            <div className="group/list mt-6 divide-y divide-neutral-200 dark:divide-neutral-800">
               {latestPosts.map((post) => (
                 <Link key={post.slug} href={`/blog/${post.slug}`} passHref>
-                  <a className="flex flex-col gap-1 py-4 text-neutral-950 no-underline hover:text-accent dark:text-white dark:hover:text-accent-dark sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
-                    <span className="text-base leading-snug">{post.title}</span>
+                  <a className="group flex flex-col gap-1 rounded-md px-3 py-4 -mx-3 text-neutral-950 no-underline transition-colors duration-200 motion-safe:transition-transform group-hover/list:opacity-45 hover:!opacity-100 hover:bg-neutral-100/80 dark:text-white dark:hover:bg-white/[0.04] motion-safe:hover:-translate-y-px sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                    <span className="text-base leading-snug transition-colors group-hover:text-accent dark:group-hover:text-accent-dark">
+                      {post.title}
+                    </span>
                     <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400">
                       {formatPublishedDate(post.publishedAt)}
                     </span>
@@ -165,48 +140,17 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="mt-16 border-t border-neutral-200 pt-12 dark:border-neutral-800 sm:mt-20">
-            <h2>Selected work</h2>
-            <div className="mt-6">
-              {selectedWork.map((item) => (
-                <article
-                  key={item.title}
-                  className="border-t border-neutral-200 py-6 dark:border-neutral-800"
-                >
-                  <h3>
-                    {item.href ? (
-                      <a
-                        href={item.href}
-                        target="_blank"
-                        rel="noreferrer noopener"
-                        className="text-accent underline decoration-accent/40 hover:decoration-accent dark:text-accent-dark dark:decoration-accent-dark/40"
-                      >
-                        {item.title}
-                      </a>
-                    ) : (
-                      item.title
-                    )}
-                  </h3>
-                  <p className="mt-2 max-w-[620px] text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
-                    {item.outcome}
-                  </p>
-                  <p className="mt-3 text-sm text-accent dark:text-accent-dark">{item.tags.join(' · ')}</p>
-                </article>
-              ))}
-            </div>
-          </section>
-
           <section id="experience" className="mt-16 scroll-mt-8 border-t border-neutral-200 pt-12 dark:border-neutral-800 sm:mt-20">
             <h2>Experience</h2>
-            <div className="mt-6">
+            <div className="group/list mt-6">
               {experience.map((item) => (
                 <div
                   key={`${item.period}-${item.role}`}
-                  className="grid gap-2 border-t border-neutral-200 py-6 dark:border-neutral-800 sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-8"
+                  className="group grid gap-2 rounded-md border-t border-neutral-200 px-3 py-6 -mx-3 transition-colors duration-200 motion-safe:transition-transform group-hover/list:opacity-45 hover:!opacity-100 hover:bg-neutral-100/80 dark:border-neutral-800 dark:hover:bg-white/[0.04] motion-safe:hover:-translate-y-px sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-8"
                 >
                   <p className="text-sm text-neutral-500 dark:text-neutral-400">{item.period}</p>
                   <div className="min-w-0">
-                    <p className="text-base text-neutral-950 dark:text-white">
+                    <p className="text-base text-neutral-950 transition-colors group-hover:text-accent dark:text-white dark:group-hover:text-accent-dark">
                       {item.role}
                       {item.companyUrl ? (
                         <>
