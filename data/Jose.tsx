@@ -3,34 +3,36 @@ import Github from '@/components/icons/Github';
 import LinkedIn from '@/components/icons/LinkedIn';
 import Twitter from '@/components/icons/Twitter';
 import Instagram from '@/components/icons/Instagram';
+import { employer, jobTitle, linkedInUrl, location, siteUrl, xUrl } from '@/data/site';
 
 const Jose: Profile = {
   name: 'Jose Tom',
   designation: (
     <>
-      Director of Engineering (Billing for AI) at{' '}
+      {jobTitle} at{' '}
       <a
-        className="font-semibold"
-        href="https://www.chargebee.com/"
+        className="underline decoration-accent/40 hover:decoration-accent dark:decoration-accent-dark/40"
+        href={employer.url}
         target="_blank"
         rel="noreferrer noopener"
       >
-        Chargebee
+        {employer.name}
       </a>
+      {` · ${location.label}`}
     </>
   ),
   description:
-    'Engineering Leader and Former Founder with 11+ years of experience building high-scale, mission-critical systems. Founded and led a startup, gaining first-hand experience in product-market fit, rapid execution, and scaling technology under resource constraints. At Chargebee, I’ve architected and scaled core monetization systems like Usage-Based Billing — capable of processing hundreds of thousands of events per second with real-time aggregation and complex pricing logic.',
+    'I lead the billing platform and the organization behind invoices, credit notes, and tax. The platform supports real-time aggregation and complex pricing at hundreds of thousands of events per second. I co-founded Beecon Fleet Management before joining Chargebee.',
   image: '/images/IMG-sikkim-small.jpg',
   social: [
     {
       type: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/josetomm/',
+      url: linkedInUrl,
       icon: <LinkedIn></LinkedIn>,
     },
     {
       type: 'X',
-      url: 'https://x.com/_jose_tom_',
+      url: xUrl,
       icon: <Twitter></Twitter>,
     },
     {
@@ -44,7 +46,7 @@ const Jose: Profile = {
       icon: <Instagram></Instagram>,
     },
   ],
-  website: 'https://www.josetom.com',
+  website: siteUrl,
 };
 
 export default Jose;

@@ -1,15 +1,20 @@
-const colors = require('tailwindcss/colors');
-
 module.exports = {
   content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
   darkMode: 'class',
-  // theme: {
-  //   extend: {
-  //     colors: {
-  //       primary: colors.gray,
-  //     },
-  //   },
-  // },
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['var(--font-inter)', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+        serif: ['var(--font-source-serif)', 'Georgia', 'serif'],
+      },
+      colors: {
+        accent: {
+          DEFAULT: '#0f6f6a',
+          dark: '#9ed9d4',
+        },
+      },
+    },
+  },
   safelist: [
     {
       pattern: /grid-cols-.+/,

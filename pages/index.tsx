@@ -1,190 +1,191 @@
-import Image from 'next/image';
+import Link from 'next/link';
+import { parseISO } from 'date-fns';
+import { allBlogs } from '.contentlayer/data';
 import { Profile } from '@/additional';
 import ProfileCard from '@/components/ProfileCard';
 import Container from '@/components/layouts/Container';
+import { formatPublishedDate } from '@/lib/dates';
 
 import Jose from '@/data/Jose';
+import { jobTitle } from '@/data/site';
 
 type RoleEntry = {
   period: string;
   role: string;
-  highlights: (string | JSX.Element)[];
-};
-
-type CompanyGroup = {
   company: string;
-  website: string;
-  logo: string;
-  tenure: string;
-  roles: RoleEntry[];
+  companyUrl?: string;
+  summary?: string | JSX.Element;
+  highlights?: (string | JSX.Element)[];
+  current?: boolean;
 };
 
-const companyTimeline: CompanyGroup[] = [
+const experience: RoleEntry[] = [
   {
+    period: 'Apr 2025 – Present',
+    role: jobTitle,
     company: 'Chargebee',
-    website: 'https://www.chargebee.com/',
-    logo: '/logos/chargebee.ico',
-    tenure: 'Nov 2018 - Present',
-    roles: [
-      {
-        period: 'Apr 2025 - Present',
-        role: 'Director of Engineering - Billing for AI',
-        highlights: [
-          'Leads Billing vertical across Usage-Based Billing, Invoices, Credit Notes, and Taxes.',
-          'Driving evolution of the billing platform for modern SaaS and AI business models.',
-          'Owns strategy spanning platform flexibility, performance, and compliance at scale.',
-          'Built Chargebee Usage-Based Billing from the ground up for high-throughput, real-time billing workloads.',
-          'Scaled billing infrastructure to handle ~200K requests per second using cell-based architecture.',
-        ],
-      },
-      {
-        period: 'Jan 2022 - Mar 2025',
-        role: 'Senior Engineering Manager',
-        highlights: [
-          'Architected and led Usage-Based Billing with real-time aggregation and complex pricing.',
-          <>
-            Built{' '}
-            <a
-              href="https://www.atomicpricing.com/"
-              target="_blank"
-              rel="noreferrer noopener"
-              className="underline decoration-sky-500/60 hover:decoration-sky-400"
-            >
-              Atomic Pricing
-            </a>{' '}
-            as an internal startup and merged it into Chargebee Growth Suite.
-          </>,
-          'Enabled rapid pricing experimentation through risk-free controlled A/B workflows.',
-        ],
-      },
-      {
-        period: 'Dec 2019 - Jan 2022',
-        role: 'Engineering Manager',
-        highlights: [
-          'Managed frontend teams across Checkout, Merchant UI, and App Experience.',
-          'Built middleware services and integrations supporting high-scale checkout flows.',
-          'Led migration from legacy JSP stack to modern Vue.js frontend architecture.',
-        ],
-      },
-      {
-        period: 'Nov 2018 - Nov 2019',
-        role: 'Software Engineering Lead',
-        highlights: [
-          'Led Chargebee Checkout and hosted pages product used for payment capture and subscriptions.',
-          'Owned APIs and framework-based integrations for embedded checkout experiences.',
-          'Integrated payment gateways like Stripe, Braintree, and others.',
-        ],
-      },
+    companyUrl: 'https://www.chargebee.com/',
+    current: true,
+    highlights: [
+      'Leads the billing organization across usage-based billing, prepaid credits, invoices, credit notes, and tax.',
+      'Sets platform strategy for flexibility, performance, and compliance at scale.',
+      'Built Chargebee Usage-Based Billing for high-throughput, real-time workloads.',
+      'Scaled billing infrastructure to ~200K requests per second on a cell-based architecture.',
     ],
   },
   {
+    period: 'Jan 2022 – Mar 2025',
+    role: 'Senior Engineering Manager',
+    company: 'Chargebee',
+    companyUrl: 'https://www.chargebee.com/',
+    summary: (
+      <>
+        Architected usage-based billing with real-time aggregation and complex pricing, and merged Atomic
+        Pricing into{' '}
+        <a
+          href="https://www.chargebee.com/growth/"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="text-accent underline decoration-accent/40 hover:decoration-accent dark:text-accent-dark dark:decoration-accent-dark/40"
+        >
+          Chargebee Growth
+        </a>
+        .
+      </>
+    ),
+  },
+  {
+    period: 'Dec 2019 – Jan 2022',
+    role: 'Engineering Manager',
+    company: 'Chargebee',
+    companyUrl: 'https://www.chargebee.com/',
+    summary:
+      'Led frontend teams for Checkout, Merchant UI, and App Experience, and the migration from a legacy JSP stack to Vue.js.',
+  },
+  {
+    period: 'Nov 2018 – Nov 2019',
+    role: 'Software Engineering Lead',
+    company: 'Chargebee',
+    companyUrl: 'https://www.chargebee.com/',
+    summary:
+      'Led Chargebee Checkout and hosted pages for payment capture and subscriptions, including Stripe and Braintree.',
+  },
+  {
+    period: 'Jan 2017 – Nov 2018',
+    role: 'Co-Founder',
     company: 'Beecon Fleet Management',
-    website: 'https://beecon.in/',
-    logo: '/logos/beecon.ico',
-    tenure: 'Jan 2017 - Nov 2018',
-    roles: [
-      {
-        period: 'Jan 2017 - Nov 2018',
-        role: 'Co-Founder',
-        highlights: [
-          'Built fleet management SaaS for real-time vehicle tracking and operations automation.',
-          'Owned end-to-end product delivery across frontend, backend, and infrastructure.',
-          'Handled revenue, sales, and execution under startup constraints.',
-        ],
-      },
-    ],
+    companyUrl: 'https://beecon.in/',
+    summary: 'Built a fleet-management product for real-time vehicle tracking and operations.',
   },
   {
+    period: 'Jan 2016 – Jan 2017',
+    role: 'Application Development Supervisor',
     company: 'Citi',
-    website: 'https://www.citi.com/',
-    logo: '/logos/citi.ico',
-    tenure: 'Jul 2014 - Jan 2017',
-    roles: [
-      {
-        period: 'Jan 2016 - Jan 2017',
-        role: 'Application Development Supervisor',
-        highlights: ['Worked on Citi FX Pulse providing real-time market access across 80+ treasury sites.'],
-      },
-      {
-        period: 'Jul 2014 - Jan 2016',
-        role: 'Application Developer',
-        highlights: [
-          'Built Local Markets Derivatives features (Spot, Futures) in FXLM.',
-          'Contributed to foreign exchange and local markets platform capabilities.',
-        ],
-      },
-    ],
+    companyUrl: 'https://www.citi.com/',
+    summary: 'Citi FX Pulse: real-time market access across 80+ treasury sites.',
+  },
+  {
+    period: 'Jul 2014 – Jan 2016',
+    role: 'Application Developer',
+    company: 'Citi',
+    companyUrl: 'https://www.citi.com/',
+    summary: 'Built Local Markets Derivatives features (spot and futures) in FXLM.',
   },
 ];
 
 export default function Home() {
   const profile: Profile = Jose;
+  const latestPosts = allBlogs
+    .slice()
+    .sort((a, b) => parseISO(b.publishedAt).getTime() - parseISO(a.publishedAt).getTime())
+    .slice(0, 3);
 
   return (
-    <div className="static">
+    <Container>
       <main>
-        <Container>
-          <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20">
-            <section className="pt-10 sm:pt-14 pb-8">
-              <ProfileCard
-                name={profile.name}
-                designation={profile.designation}
-                description={profile.description}
-                image={profile.image}
-                social={profile.social}
-                website={profile.website}
-              ></ProfileCard>
-            </section>
+        <div className="mx-auto max-w-5xl px-4 pb-20 sm:px-6 lg:px-8">
+          <section className="pt-8 sm:pt-14">
+            <ProfileCard
+              name={profile.name}
+              designation={profile.designation}
+              description={profile.description}
+              image={profile.image}
+              social={profile.social}
+              website={profile.website}
+            ></ProfileCard>
+          </section>
 
-            <section className="py-8">
-              <h2 className="mb-5">Career timeline</h2>
-              <div className="space-y-5">
-                {companyTimeline.map((group) => (
-                  <div
-                    key={group.company}
-                    className="rounded-xl border border-gray-200 dark:border-gray-700/80 bg-white dark:bg-[#111827]"
-                  >
-                    <div className="p-4 sm:p-5 border-b border-gray-100 dark:border-gray-700/70 flex items-center gap-3">
-                      <Image
-                        src={group.logo}
-                        alt={`${group.company} logo`}
-                        width={36}
-                        height={36}
-                        className="h-9 w-9 object-contain"
-                      />
-                      <div>
-                        <a
-                          href={group.website}
-                          target="_blank"
-                          rel="noreferrer noopener"
-                          className="font-semibold text-gray-900 dark:text-white hover:underline"
-                        >
-                          {group.company}
-                        </a>
-                        <p className="text-xs text-gray-500 dark:text-gray-400">{group.tenure}</p>
-                      </div>
-                    </div>
+          <section id="writing" className="mt-16 border-t border-neutral-200 pt-12 dark:border-neutral-800 sm:mt-20">
+            <div className="flex items-baseline justify-between gap-4">
+              <h2>Writing</h2>
+              <Link href="/blog" passHref>
+                <a className="text-sm text-accent underline decoration-accent/40 hover:decoration-accent dark:text-accent-dark dark:decoration-accent-dark/40">
+                  All writing
+                </a>
+              </Link>
+            </div>
+            <div className="group/list mt-6 divide-y divide-neutral-200 dark:divide-neutral-800">
+              {latestPosts.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}`} passHref>
+                  <a className="group flex flex-col gap-1 rounded-md px-3 py-4 -mx-3 text-neutral-950 no-underline transition-colors duration-200 motion-safe:transition-transform group-hover/list:opacity-45 hover:!opacity-100 hover:bg-neutral-100/80 dark:text-white dark:hover:bg-white/[0.04] motion-safe:hover:-translate-y-px sm:flex-row sm:items-baseline sm:justify-between sm:gap-8">
+                    <span className="text-base leading-snug transition-colors group-hover:text-accent dark:group-hover:text-accent-dark">
+                      {post.title}
+                    </span>
+                    <span className="shrink-0 text-sm text-neutral-500 dark:text-neutral-400">
+                      {formatPublishedDate(post.publishedAt)}
+                    </span>
+                  </a>
+                </Link>
+              ))}
+            </div>
+          </section>
 
-                    <div className="divide-y divide-gray-100 dark:divide-gray-700/70">
-                      {group.roles.map((item) => (
-                        <div key={`${group.company}-${item.role}`} className="p-4 sm:p-5">
-                          <p className="font-medium text-gray-900 dark:text-white">{item.role}</p>
-                          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1 mb-3">{item.period}</p>
-                          <ul className="list-disc pl-5 space-y-1 text-sm text-gray-700 dark:text-gray-300">
-                            {item.highlights.map((point, idx) => (
-                              <li key={`${item.role}-${idx}`}>{point}</li>
-                            ))}
-                          </ul>
-                        </div>
-                      ))}
-                    </div>
+          <section id="experience" className="mt-16 scroll-mt-8 border-t border-neutral-200 pt-12 dark:border-neutral-800 sm:mt-20">
+            <h2>Experience</h2>
+            <div className="group/list mt-6">
+              {experience.map((item) => (
+                <div
+                  key={`${item.period}-${item.role}`}
+                  className="group grid gap-2 rounded-md border-t border-neutral-200 px-3 py-6 -mx-3 transition-colors duration-200 motion-safe:transition-transform group-hover/list:opacity-45 hover:!opacity-100 hover:bg-neutral-100/80 dark:border-neutral-800 dark:hover:bg-white/[0.04] motion-safe:hover:-translate-y-px sm:grid-cols-[12rem_minmax(0,1fr)] sm:gap-8"
+                >
+                  <p className="text-sm text-neutral-500 dark:text-neutral-400">{item.period}</p>
+                  <div className="min-w-0">
+                    <p className="text-base text-neutral-950 transition-colors group-hover:text-accent dark:text-white dark:group-hover:text-accent-dark">
+                      {item.role}
+                      {item.companyUrl ? (
+                        <>
+                          {', '}
+                          <a
+                            href={item.companyUrl}
+                            target="_blank"
+                            rel="noreferrer noopener"
+                            className="text-accent underline decoration-accent/40 hover:decoration-accent dark:text-accent-dark dark:decoration-accent-dark/40"
+                          >
+                            {item.company}
+                          </a>
+                        </>
+                      ) : (
+                        `, ${item.company}`
+                      )}
+                    </p>
+                    {item.current && item.highlights ? (
+                      <ul className="mt-3 list-disc space-y-1 pl-5 text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+                        {item.highlights.map((point) => (
+                          <li key={String(point)}>{point}</li>
+                        ))}
+                      </ul>
+                    ) : (
+                      <p className="mt-2 max-w-[620px] text-base leading-relaxed text-neutral-700 dark:text-neutral-300">
+                        {item.summary}
+                      </p>
+                    )}
                   </div>
-                ))}
-              </div>
-            </section>
-          </div>
-        </Container>
+                </div>
+              ))}
+            </div>
+          </section>
+        </div>
       </main>
-    </div>
+    </Container>
   );
 }

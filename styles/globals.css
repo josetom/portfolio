@@ -4,23 +4,39 @@
 
 blockquote,
 strong {
-  @apply text-black dark:text-white;
+  @apply text-neutral-950 dark:text-white;
 }
 
 article img {
   @apply w-full rounded-lg;
 }
 
+h1,
+h2,
+h3 {
+  font-family: var(--font-source-serif), Georgia, serif;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
 h1 {
-  @apply text-black dark:text-white font-bold text-3xl sm:text-4xl md:text-5xl tracking-tight;
+  @apply text-neutral-950 dark:text-white text-4xl sm:text-5xl leading-tight;
+}
+
+h1.display {
+  @apply text-5xl sm:text-6xl font-normal leading-[1.05];
 }
 
 h2 {
-  @apply text-black dark:text-white font-semibold text-lg md:text-xl tracking-tight;
+  @apply text-neutral-950 dark:text-white text-2xl sm:text-3xl;
 }
 
 h3 {
-  @apply text-gray-700 dark:text-gray-200;
+  @apply text-neutral-950 dark:text-white text-xl;
+}
+
+.prose a {
+  @apply text-accent decoration-accent/40 transition-all dark:text-accent-dark dark:decoration-accent-dark/40;
 }
 
 .prose .anchor {
@@ -37,12 +53,8 @@ h3 {
   @apply visible no-underline;
 }
 
-.prose a {
-  @apply transition-all;
-}
-
 .prose .anchor:after {
-  @apply text-gray-300 dark:text-gray-700;
+  @apply text-neutral-300 dark:text-neutral-700;
   content: '#';
 }
 
@@ -51,5 +63,31 @@ h3 {
 }
 
 input {
-  @apply text-black dark:text-white bg-white dark:bg-black;
+  @apply text-neutral-950 dark:text-white bg-white dark:bg-black;
+}
+
+.cursor-spot {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    520px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    rgba(15, 111, 106, 0.14),
+    transparent 42%
+  );
+}
+
+.dark .cursor-spot {
+  background: radial-gradient(
+    520px circle at var(--spot-x, -999px) var(--spot-y, -999px),
+    rgba(158, 217, 212, 0.12),
+    transparent 45%
+  );
+}
+
+@media (pointer: coarse), (prefers-reduced-motion: reduce) {
+  .cursor-spot {
+    display: none;
+  }
 }
